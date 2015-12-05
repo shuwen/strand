@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<script language="javascript" src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+        <link rel="import" href="../mm-button/mm-button.html">
+        <link rel="import" href="../mm-drawer/mm-drawer.html">
+        <link rel="import" href="../mm-input/mm-input.html">
+		<link rel="import" href="mm-flex-layout.html">
+		<style is="custom-style" type="text/css">
+			body, html {
+				height: 100%;
+				min-height: 100%;
+			}
+
+			body {
+				margin:0;
+				padding:0;
+				background: #eee;
+			}
+
+			p {
+				font-family: sans-serif;
+				color: #333;
+				font-size: 12px;
+				line-height: 18px;
+				margin: 20px 0;
+			}
+
+			.bold { font-weight: bold; }
+
+			hr {
+				border: 0;
+				display: block;
+					border-bottom: 1px solid #fff;
+					border-top: 1px solid #ccc;
+					height: 0px;
+					margin-top: 20px;
+			}
+
+			.vr {
+				width:0px;
+				height: 100%;
+				border-right: 1px solid #fff;
+				border-left: 1px solid #ccc;
+				display: block;
+				float: left;
+			}
+
+			div[span] {
+                border: 1px solid #333;
+                background-color: #999;
+            }
+		</style>
+  </head>
+  <body>
+        <mm-flex-layout breakpoints='{"x-small":{"max":300},"small":{"min":301,"max":600},"medium":{"min":601,"max":800},"large":{"min":801,"max":1200},"x-large":{"min":1201}}' gutter="28" unresolved>
+            <div span="max">
+                MAX
+            </div>
+            <div span="8">
+                SPAN 8
+            </div>
+            <div span="8">
+                SPAN 8
+            </div>
+            <div span="8">
+                SPAN 8
+            </div>
+            <div span="8">
+                SPAN 8
+            </div>
+            <div span="4">
+                SPAN 4
+            </div>
+            <div span="4">
+                SPAN 4
+            </div>
+        </mm-flex-layout>
+  </body>
+</html>
