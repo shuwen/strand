@@ -1,0 +1,46 @@
+<!--
+ * @license
+ * Copyright (c) 2015 MediaMath Inc. All rights reserved.
+ * This code may only be used under the BSD style license found at http://mediamath.github.io/strand/LICENSE.txt
+
+-->
+<link rel="import" href="../../bower_components/polymer/polymer.html"/>
+<link rel="import" href="../shared/behaviors/resolvable.html"/>
+<link rel="import" href="../shared/behaviors/stylable.html"/>
+<link rel="import" href="../shared/behaviors/lightdomgettable.html"/>
+
+<dom-module id="mm-responsive-breakpoints">
+	<link rel="import" type="css" href="mm-responsive-breakpoints.css"/>
+	<template>
+	</template>
+</dom-module>
+
+<script>
+	(function(scope) {
+		scope.ResponsiveBreakpoints = Polymer({
+			is: 'mm-responsive-breakpoints',
+
+			properties: {
+				breakpoints: {
+					type: Array,
+					value: null,
+					notify: true
+				}
+			},
+
+			behaviors: [StrandTraits.LightDomGettable],
+
+			attached: function() {
+				var cfg = this.getLightDOM(),
+					breakpoints = [];
+				cfg.forEach((o) => {
+					var b = {};
+					for(var i=0; i<o.attributes.length; i++) b[o.attributes[i].name] = o.attributes[i].value;
+					breakpoints.push(b);
+				});
+				this.set('breakpoints',breakpoints);
+			}
+
+		});
+	})(window.Strand = window.Strand || {});
+</script>
