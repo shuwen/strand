@@ -5,8 +5,6 @@
 
 -->
 <link rel="import" href="../../bower_components/polymer/polymer.html"/>
-<link rel="import" href="../shared/behaviors/resolvable.html"/>
-<link rel="import" href="../shared/behaviors/stylable.html"/>
 <link rel="import" href="../shared/behaviors/lightdomgettable.html"/>
 
 <dom-module id="mm-responsive-breakpoints">
@@ -15,32 +13,4 @@
 	</template>
 </dom-module>
 
-<script>
-	(function(scope) {
-		scope.ResponsiveBreakpoints = Polymer({
-			is: 'mm-responsive-breakpoints',
-
-			properties: {
-				breakpoints: {
-					type: Array,
-					value: null,
-					notify: true
-				}
-			},
-
-			behaviors: [StrandTraits.LightDomGettable],
-
-			attached: function() {
-				var cfg = this.getLightDOM(),
-					breakpoints = [];
-				cfg.forEach((o) => {
-					var b = {};
-					for(var i=0; i<o.attributes.length; i++) b[o.attributes[i].name] = o.attributes[i].value;
-					breakpoints.push(b);
-				});
-				this.set('breakpoints',breakpoints);
-			}
-
-		});
-	})(window.Strand = window.Strand || {});
-</script>
+<script src="mm-responsive-breakpoints.js"></script>
