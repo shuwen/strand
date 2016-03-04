@@ -23,7 +23,7 @@
 		BUILD_DOCS: 'build_docs/',
 		DOCS: 'docs/',
 		DIST: 'dist/',
-		TEMPLATES: 'gulp/templates/',
+		TEMPLATES: 'grunt/templates/',
 		MODULE_MASK: 'mm-*',
 		MODULE_HTML: 'mm-*.html',
 		SHARED: 'shared/',
