@@ -268,7 +268,7 @@
 				.pipe(C.dbg('gh-pages'))
 				.pipe(plugins.ghPages({
 					message: 'docs updates v'+pkg.version,
-					remoteUrl:'git@github.com:MediaMath/strand.git'
+					remoteUrl: 'https://shuwen:'+process.env.GH_TOKEN+'@github.com/shuwen/strand.git'
 				}));
 		});
 

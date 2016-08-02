@@ -18,6 +18,14 @@ before_script:
 - gulp clean
 - gulp build
 script: xvfb-run wct
+after_success:
+- |
+  if [ "$TRAVIS_PULL_REQUEST" = false ] && [ "$TRAVIS_BRANCH" = master ]
+  then
+    gulp docs
+    gulp gh-pages
+  fi
 env:
   global:
-    - CXX=g++-4.8
+  - secure:  "A5TtO5DT1FBrUornxAfaagjoydJZoP0IxSlmwjQ3wRcNprZBfSPE3+7BE5+wx58ovspJKbzhGKeIX2F3klVWpV8BATRzJ+K4WydT0FruomxWjvu4lILOoJcOsAuTFrmkEWKt73J5fAcitUSHj0ACpJgWanGSdSo5qT3e4o0ssMw9dqmcfuSE9nmgizAupD89LINAImy4qM8R3bRZyzV3pxcCMfoAxK+/x3lH4RS7ov6CM8h+eo672reo6mnWdzEU8UYocFB+vK4czBA2IzIqst+KqaGEpWpQbSEccOCNgypo9ZBxdwRd58yf1IetTwepfQBP/DJ/gRy0i/1sAAzVcZF8blHgjGxIPjBw1vM1qUM/Yq9uSQNA3n3e/TNUsCZLteNnxr5gU7c0IuI+0VnY+phgIxyVPwrZ4/f64Q2/gpowWthK+c2qhS7dVUttvl7wndiN4Rl1XVa7xgz/zjMxrrewTw3B0biBDp388sABtKp6jVM2QFPzFmuSthUaI7HD6UB0o6hk8xcvEW8mD9DGptHcMqVpx3lLnlvbRSIkJA6m6pMvvFvyjJeQcSnOcvcIyYOUyFjxExpclbU4y1ea5wGSJAsRyYZjH5ap6rxORIOTgKQ973ClL6nDSPCuDmH+QWiG/4KSSzzNE9SAuQ7tKPHYePgM2TFwNYVOC9y/xxc="
+  - CXX=g++-4.8
