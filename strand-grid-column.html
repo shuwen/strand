@@ -25,7 +25,7 @@
 		<script language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 	</head>
 	<body unresolved>
-		<strand-docs-shell id="docsShell" version="4.0.0" mobile-header="Strand Docs">
+		<strand-docs-shell id="docsShell" version="4.1.0" mobile-header="Strand Docs">
 			<strand-docs-nav id="articlesNav">
 				<strand-header size="medium">Articles</strand-header>
 				<strand-list-item id="getting_started" value="article_getting_started.html">Getting Started</strand-list-item>
@@ -37,7 +37,7 @@
 				<strand-list-item id="grid_data_integration" value="article_grid_data_integration.html" class="child"> Data Integration with strand-grid</strand-list-item>
 				<strand-list-item id="grid_custom_grid_item" value="article_grid_custom_grid_item.html" class="child"> Creating Custom Grid Items</strand-list-item>
 				<strand-list-item id="migration_guide" value="article_migration_guide.html">Migration Guide</strand-list-item>
-				<strand-list-item id="repeater" value="article_repeater.html">Using strand-repeater</strand-list-item>
+				<strand-list-item id="repeater" value="article_repeater.html">Working with strand-repeater</strand-list-item>
 			</strand-docs-nav>
 			<strand-docs-nav id="componentsNav">
 				<strand-header size="medium">Components</strand-header>
@@ -49,6 +49,7 @@
 				<strand-list-item id="strand-calendar" value="strand-calendar.html">strand-calendar</strand-list-item>
 				<strand-list-item id="strand-checkbox" value="strand-checkbox.html">strand-checkbox</strand-list-item>
 				<strand-list-item id="strand-collection" value="strand-collection.html">strand-collection</strand-list-item>
+				<strand-list-item id="strand-datepicker-panel" value="strand-datepicker-panel.html">strand-datepicker-panel</strand-list-item>
 				<strand-list-item id="strand-datepicker" value="strand-datepicker.html">strand-datepicker</strand-list-item>
 				<strand-list-item id="strand-dialog" value="strand-dialog.html">strand-dialog</strand-list-item>
 				<strand-list-item id="strand-drawer" value="strand-drawer.html">strand-drawer</strand-list-item>
@@ -83,13 +84,14 @@
 				<strand-list-item id="strand-tab" value="strand-tab.html">strand-tab</strand-list-item>
 				<strand-list-item id="strand-tabs" value="strand-tabs.html">strand-tabs</strand-list-item>
 				<strand-list-item id="strand-textarea" value="strand-textarea.html">strand-textarea</strand-list-item>
+				<strand-list-item id="strand-timepicker" value="strand-timepicker.html">strand-timepicker</strand-list-item>
 				<strand-list-item id="strand-tooltip" value="strand-tooltip.html">strand-tooltip</strand-list-item>
 			</strand-docs-nav>
 			<div class="docs-logo">
 				<a class="strand-logo">
 					<img src="images/strand-logo.svg" />
 				</a>
-				<p class="mini-subhead version">v4.0.0</p>
+				<p class="mini-subhead version">v4.1.0</p>
 			</div>			<footer class="layout-footer">
 				<div class="docs-footer">
 					<div class="footer-logo-box">
@@ -113,8 +115,8 @@
 						<div class="editor-wrapper">
 							<div id="editor">&lt;strand-grid id=&quot;mmTestGrid&quot; unresolved style=&quot;width: 100%; height: 400px;&quot;&gt;
 	&lt;strand-grid-column field=&quot;first_name&quot; width=&quot;20%&quot; resize sort&gt;First Name&lt;/strand-grid-column&gt;
-	&lt;strand-grid-column field=&quot;last_name&quot; width=&quot;20%&quot; resize sort align=&quot;right&quot;&gt;Last Name&lt;/strand-grid-column&gt;
-	&lt;strand-grid-column field=&quot;email&quot; width=&quot;60%&quot; sort&gt;Email&lt;/strand-grid-column&gt;
+	&lt;strand-grid-column field=&quot;last_name&quot; width=&quot;20%&quot; resize sort align-column=&quot;right&quot;&gt;Last Name&lt;/strand-grid-column&gt;
+	&lt;strand-grid-column field=&quot;email&quot; width=&quot;60%&quot; sort info=&quot;More info here&quot; tip-width=&quot;100&quot;&gt;Email&lt;/strand-grid-column&gt;
 &lt;/strand-grid&gt;
 &lt;script&gt;
 	var grid = document.querySelector(&quot;#mmTestGrid&quot;),
@@ -138,8 +140,8 @@
 						<h3>Example Output</h3>
 						<div class="content-box example" id="example-strand-grid-column"><strand-grid id="mmTestGrid" unresolved style="width: 100%; height: 400px;">
 	<strand-grid-column field="first_name" width="20%" resize sort>First Name</strand-grid-column>
-	<strand-grid-column field="last_name" width="20%" resize sort align="right">Last Name</strand-grid-column>
-	<strand-grid-column field="email" width="60%" sort>Email</strand-grid-column>
+	<strand-grid-column field="last_name" width="20%" resize sort align-column="right">Last Name</strand-grid-column>
+	<strand-grid-column field="email" width="60%" sort info="More info here" tip-width="100">Email</strand-grid-column>
 </strand-grid>
 <script>
 	var grid = document.querySelector("#mmTestGrid"),
@@ -212,7 +214,7 @@
 							</tr>
 							<tr>
 								<td>
-									<span class="bold">minWidth : </span><span class="italic">Integer&nbsp;(optional)&nbsp;</span><br/>
+									<span class="bold">minWidth : </span><span class="italic">Number&nbsp;(optional)&nbsp;</span><br/>
 									default : <span class="italic">75</span><br/>
 									options : <span class="italic">none</span><br/>
 									attribute : <span class="italic">min-width</span><br/>
@@ -220,6 +222,29 @@
 								</td>
 								<td>
 									<span class="desc">The minimum width of the column in pixels when resizing.</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold">tipWidth : </span><span class="italic">Number&nbsp;&nbsp;</span><br/>
+									default : <span class="italic">150</span><br/>
+									options : <span class="italic">none</span><br/>
+									attribute : <span class="italic">tip-width</span><br/>
+									reflected to attribute : <span class="italic">no</span>
+								</td>
+								<td>
+									<span class="desc">The desired width of the tooltip for the column, in pixels (see: the &#39;info&#39; property). The default tooltip width will be 150px, and can be adjusted as needed based upon the verbosity of the messaging.</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="bold">info : </span><span class="italic">String&nbsp;(optional)&nbsp;</span><br/>
+									default : <span class="italic">false</span><br/>
+									options : <span class="italic">none</span><br/>
+									attribute : <span class="italic">info</span><br/>
+									reflected to attribute : <span class="italic">no</span>
+								</td>
+								<td>
 								</td>
 							</tr>
 							<tr>
@@ -272,10 +297,10 @@
 							</tr>
 							<tr>
 								<td>
-									<span class="bold">align : </span><span class="italic">String&nbsp;(optional)&nbsp;</span><br/>
+									<span class="bold">alignColumn : </span><span class="italic">String&nbsp;(optional)&nbsp;</span><br/>
 									default : <span class="italic">left</span><br/>
 									options : <span class="italic"><span class="option">left</span><span class="option">right</span></span><br/>
-									attribute : <span class="italic">align</span><br/>
+									attribute : <span class="italic">align-column</span><br/>
 									reflected to attribute : <span class="italic">no</span>
 								</td>
 								<td>
