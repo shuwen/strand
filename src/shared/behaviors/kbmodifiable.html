@@ -1,0 +1,39 @@
+<script>
+    (function(scope) {
+        var modifiers_available = new Set([
+            91, // left super (aka ⌘, aka windows)
+            93, // right super
+            224, // left ⌘ in firefox
+            17, // ctrl
+            16, // shift
+            18 // alt (aka option)
+        ]);
+
+        var modifier_keys = new Set();
+
+        window.addEventListener('keydown', setModifier);
+        window.addEventListener('keyup', unsetModifier);
+        
+        function setModifier(e) {
+            console.log(e.keyCode);
+            if(modifiers_available.has(e.keyCode)) {
+                modifier_keys.add(e.keyCode);
+            }
+        }
+
+        function unsetModifier(e) {
+            if(modifier_keys.has(e.keyCode)) {
+                modifier_keys.delete(e.keyCode);
+            }
+        }
+        
+        scope.KeyModifiable = {
+            properties: {
+                modifierKeys: {
+                    type: Object,
+                    value: modifier_keys
+                }
+            }
+        };
+    }(window.StrandTraits = window.StrandTraits || {}))
+</script>
